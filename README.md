@@ -14,4 +14,4 @@ To know about the API read the comments.
 
 ### Test
 
-I'm testing with [node.js](http://nodejs.org/) and [buster.js](http://docs.busterjs.org/en/latest/).
+I'm testing with [node.js](http://nodejs.org/) and [karma](http://karma-runner.github.io/0.8/index.html).
