@@ -77,13 +77,14 @@ var SquareSeq = (function () {
 
 				/**
 				This is the right colour to choose.
+				Calling SquareSeq#reset() invalidates the iterator.
 
 				@return {Element} The colour pointed by the iterator.
 				**/
 				nextSquare: function () {
-
-					return self._els[self._seq[++this._index]]
-
+					if (self._seq.length) 
+						return self._els[self._seq[++this._index]]
+			   		else throw new Error("Invalid Iterator")
 				}
 			}
 
