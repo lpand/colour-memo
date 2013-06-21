@@ -7,7 +7,7 @@ var SquareSeq = (function () {
 	@constructor
 
 	@param {Object} opts
-		@param {Array} 
+		@param {Array}  elems
 		@param {Number} [squareRepeat=3] Maximum times a colour is repeated in row. 
 		@param {Number} [maxLength=25] Maximum number of colours into a sequence. 
 		@param {Number} [glareInterval=150] Period of time, in ms,  of a square's glare.
@@ -17,7 +17,7 @@ var SquareSeq = (function () {
 	function SquareSeq (opts) {
 
 		if (!opts || !opts.elems || opts.elems.length != 4)
-			return
+			throw new Error("elems must be provided...")
 
 		var i = 0, len
 

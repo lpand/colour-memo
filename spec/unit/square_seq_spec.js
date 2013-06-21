@@ -28,6 +28,10 @@ describe("SquareSeq", function () {
 
     var s = new SquareSeq({ elems: nodes })
 
+    it ("throws an error if elems is not provided", function() {
+        var e = function () { new SquareSeq() }
+        expect(e).toThrow()
+    })
 
     it ("has initially no colours", function () {
         var it = s.iter()
