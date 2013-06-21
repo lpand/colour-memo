@@ -1,5 +1,4 @@
 
-buster.spec.expose();
 
 describe("SquareSeq", function () {
 
