@@ -69,21 +69,3 @@ describe("SquareSeq", function () {
 
     })
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

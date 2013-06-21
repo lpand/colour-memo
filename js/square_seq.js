@@ -162,25 +162,3 @@ var SquareSeq = (function () {
 	return SquareSeq
 
 })()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
