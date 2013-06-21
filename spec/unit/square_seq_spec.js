@@ -59,17 +59,22 @@ describe("SquareSeq", function () {
         expect(it.hasSquare()).toBeFalsy()
     })
 
-    it ("the iterator returns the right sequence", function() {
-        var i = 0
-        var fourElem
-        var indexSeq
+    it ("the iterator returns the right number of squares", function () {
+        var i = 0, j = 0
         while (i++ < 5) s.append()
         var it = s.iter()
-        i = 0
+        while (j++ < i)
+            expect(it.nextSquare).not.toThrow()
+    })
+
+//  Avoid to use internal api for this...
+    it ("the iterator returns the right sequence", function() {
+        var i = 0, j = 0, fourElem, indexSeq
+        while (i++ < 5) s.append()
+        var it = s.iter()
         fourElem = s._els
         indexSeq = s._seq
         while (it.hasSquare())
-            expect(it.nextSquare()).toEqual(fourElem[indexSeq[i++]])
-
+            expect(it.nextSquare()).toEqual(fourElem[indexSeq[j++]])
     })
 })
