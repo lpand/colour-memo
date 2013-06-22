@@ -1,0 +1,91 @@
+* {
+  margin: 0;
+  padding: 0; }
+
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden; }
+
+body {
+  background-color: #333333; }
+
+@media screen and (orientation: portrait) {
+  #container {
+    width: 80%;
+    height: 50%;
+    margin: 20% auto auto 10%; }
+
+  #control ul {
+    letter-spacing: 0.2em;
+    text-align: center;
+    margin-top: 15%; } }
+@media screen and (orientation: landscape) {
+  #container {
+    width: 70%;
+    height: 77%;
+    margin: 7% auto auto 23%; }
+
+  #control ul {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-top: 3%;
+    margin-left: 2%;
+    letter-spacing: 0.1em; } }
+#control ul {
+  list-style: none;
+  font-family: 'Six Caps', sans-serif;
+  color: #EEEEEE;
+  text-transform: uppercase;
+  font-size: xx-large;
+  text-shadow: #FF0000 -1px 2px; }
+#control li:active {
+  color: #BBBBBB; }
+
+#top-left-square:active, .glare-top-left-square {
+  -webkit-box-shadow: 0 0 1em 0.5em #990000;
+  -moz-box-shadow: 0 0 1em 0.5em #990000;
+  box-shadow: 0 0 1em 0.5em #990000; }
+
+#top-right-square:active, .glare-top-right-square {
+  -webkit-box-shadow: 0 0 1em 0.5em #0fff00;
+  -moz-box-shadow: 0 0 1em 0.5em #0fff00;
+  box-shadow: 0 0 1em 0.5em #0fff00; }
+
+#bottom-right-square:active, .glare-bottom-right-square {
+  -webkit-box-shadow: 0 0 1em 0.5em yellow;
+  -moz-box-shadow: 0 0 1em 0.5em yellow;
+  box-shadow: 0 0 1em 0.5em yellow; }
+
+#bottom-left-square:active, .glare-bottom-left-square {
+  -webkit-box-shadow: 0 0 1em 0.5em blue;
+  -moz-box-shadow: 0 0 1em 0.5em blue;
+  box-shadow: 0 0 1em 0.5em blue; }
+
+#top-left-square, #top-right-square, #bottom-right-square, #bottom-left-square {
+  display: inline-block;
+  margin: 0.5%;
+  border-radius: 10px;
+  width: 48%;
+  height: 48%; }
+
+#top-left-square {
+  background-color: #F02311; }
+
+#top-right-square {
+  background-color: #00FF00; }
+
+#bottom-right-square {
+  background-color: #FFFF00; }
+
+#bottom-left-square {
+  background-color: #0000FF; }
+
+#volume {
+  font-size: x-large;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin-bottom: 0.1em;
+  margin-left: 0.5em; }
