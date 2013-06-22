@@ -1,0 +1,103 @@
+
+@mixin container($w, $h, $margin) {
+    width: $w;
+    height: $h;
+    margin: $margin;
+}
+
+@mixin shadow($shadow) {
+    -webkit-box-shadow:  0 0 1em 0.5em $shadow;
+    -moz-box-shadow:  0 0 1em 0.5em $shadow;
+    box-shadow:  0 0 1em 0.5em $shadow;
+}
+
+$tl: top-left-square;
+$tr: top-right-square;
+$bl: bottom-right-square;
+$br: bottom-left-square;
+$tl-shadow: #990000;
+$tr-shadow: #0FFF00;
+$bl-shadow: #FFFF00;
+$br-shadow: #0000FF; 
+
+* { margin: 0; padding: 0; }
+
+html, body {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+body { background-color: #333333; }
+
+@media screen and (orientation:portrait) {
+    #container { @include container(80%, 50%, 20% auto auto 10%); }
+    #control ul {
+        letter-spacing: 0.2em;
+        text-align: center;
+        margin-top: 15%;
+    }
+}
+
+@media screen and (orientation:landscape) {
+    #container { @include container(70%, 77%, 7% auto auto 23%); }
+    #control ul {
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin-top: 3%;
+        margin-left: 2%;
+        letter-spacing: 0.1em;
+    }
+}
+
+#control {
+    ul {
+        list-style: none;
+        font-family: 'Six Caps', sans-serif;
+        color: #EEEEEE;
+        text-transform: uppercase;
+        font-size: xx-large;
+        text-shadow: #FF0000 -1px 2px; 
+    }
+    li:active { color: #BBBBBB; }
+}
+
+
+
+##{$tl}:active, .glare-#{$tl} { @include shadow($tl-shadow); }
+##{$tr}:active, .glare-#{$tr} { @include shadow($tr-shadow); }
+##{$bl}:active, .glare-#{$bl} { @include shadow($bl-shadow); }
+##{$br}:active, .glare-#{$br} { @include shadow($br-shadow); }
+
+##{$tl}, ##{$tr}, ##{$bl}, ##{$br} { 
+    display: inline-block;
+    margin: 0.5%;
+    border-radius: 10px;
+    width: 48%;
+    height: 48%;
+}
+
+##{$tl} { background-color: #F02311; }
+##{$tr} { background-color: #00FF00; }
+##{$bl} { background-color: #FFFF00; }
+##{$br} { background-color: #0000FF; }
+
+#volume {
+    font-size: x-large;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin-bottom: 0.1em;
+    margin-left: 0.5em;
+}
+
+
+
+
+
+
+
+
+
+
