@@ -16,3 +16,4 @@ Icon
 no_trace/
 node_modules/
 *.lock
+.sass-cache/
