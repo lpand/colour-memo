@@ -9,10 +9,8 @@ var SquareSeq = (function () {
 	@param {Object} opts
 		@param {Array}  elems
 		@param {Number} [squareRepeat=3] Maximum times a colour is repeated in row. 
-		@param {Number} [maxLength=25] Maximum number of colours into a sequence. 
 		@param {Number} [glareInterval=150] Period of time, in ms,  of a square's glare.
 		@param {Number} [gap=glareInterval+200] Period of time, in ms, between two glares.
-		@param {Function} [cb] - callback called when the user overcome the last sequece.
 	**/
 	function SquareSeq (opts) {
 
@@ -156,6 +154,12 @@ var SquareSeq = (function () {
 					return this._els[i].sound
 			}
 
+		},
+
+		length: function() {
+
+			return this._seq.length
+			
 		}
 		
 	}
