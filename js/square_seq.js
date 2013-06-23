@@ -19,12 +19,12 @@ var SquareSeq = (function () {
 
 		var i = 0, len
 
-		this._els = []
+		this.sqrs = []
 		for (; i < 4; ++i) {
 			
-			this._els[i] = opts.elems[i]
+			this.sqrs[i] = opts.elems[i]
 
-			this._els[i].sound.start(0)
+			this.sqrs[i].sound.start(0)
 
 		}
 		/**
@@ -81,7 +81,7 @@ var SquareSeq = (function () {
 				**/
 				nextSquare: function () {
 					if (self._seq.length) 
-						return self._els[self._seq[++this._index]]
+						return self.sqrs[self._seq[++this._index]]
 			   		else throw new Error("Invalid Iterator")
 				}
 			}
@@ -95,7 +95,7 @@ var SquareSeq = (function () {
 			var a = [] 
 
 			for (; i < len; ++i)
-				a.push(this._els[this._seq[i]])
+				a.push(this.sqrs[this._seq[i]])
 
 			return a
 
@@ -150,8 +150,8 @@ var SquareSeq = (function () {
 		soundOf: function (colour) {
 
 			for (var i = 0; i < 4; ++i) {
-				if (this._els[i].colour === colour)
-					return this._els[i].sound
+				if (this.sqrs[i].colour === colour)
+					return this.sqrs[i].sound
 			}
 
 		},

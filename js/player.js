@@ -14,7 +14,7 @@ var Player = (function () {
 
 		this._sSeq = squareSeq
 
-		sound = this._sSeq._els[0].sound
+		sound = this._sSeq.sqrs[0].sound
 		this._volume = sound.context.createGain()
 		this._volume.gain.value = 0.1
 		this._volume.connect(this._volume.context.destination)
