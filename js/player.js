@@ -61,7 +61,7 @@ var Player = (function () {
 			}
 		})
 
-		cont.addEventListener('mousedown', function (e) {
+		cont.addEventListener(touchev, function (e) {
 
 			if (self._isMute || e.target === cont) return
 
