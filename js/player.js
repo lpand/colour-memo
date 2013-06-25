@@ -5,7 +5,8 @@ var Player = (function () {
 	var cont = doc.getElementById('container')
 	var start = doc.getElementById('start')
 	var volume = doc.getElementById('volume')
-	var touchev = 'touchstart'
+	var touchstart = 'touchstart'
+	var touchend = 'touchend'
 
 	function Player (squareSeq) {
 
@@ -25,7 +26,7 @@ var Player = (function () {
 
 		this._timeouts = []
 
-		start.addEventListener(touchev, function () { 
+		start.addEventListener(touchend, function () { 
 
 			for (var i = 0, len = self._timeouts.length; i < len; ++i)
 				window.clearTimeout(self._timeouts[i])
@@ -35,14 +36,14 @@ var Player = (function () {
 
 			self._sSeq.reset()
 
-			cont.removeEventListener(touchev, this._clickListener)
+			cont.removeEventListener(touchend, this._clickListener)
 
 			setTimeout(function () { self._cycle() }, 1000)
 
 		})
 
 
-		volume.addEventListener(touchev, function (e) {
+		volume.addEventListener(touchend, function (e) {
 
 			e.preventDefault()
 
@@ -61,7 +62,7 @@ var Player = (function () {
 			}
 		})
 
-		cont.addEventListener(touchev, function (e) {
+		cont.addEventListener(touchstart, function (e) {
 
 			if (self._isMute || e.target === cont) return
 
@@ -141,7 +142,7 @@ var Player = (function () {
 
 			this._it = this._sSeq.iter()
 
-			cont.addEventListener(touchev, this._clickListener)
+			cont.addEventListener(touchend, this._clickListener)
 
 		},
 
@@ -156,7 +157,7 @@ var Player = (function () {
 			// completed yet, do nothing.
 			if (sq && sq.colour !== e.target) {
 				
-				cont.removeEventListener(touchev, this._clickListener)
+				cont.removeEventListener(touchend, this._clickListener)
 
 				this._wrong()
 
@@ -168,7 +169,7 @@ var Player = (function () {
 			// if the played chose the right sequence
 			else if (! this._it.hasSquare()) {
 
-				cont.removeEventListener(touchev, this._clickListener)
+				cont.removeEventListener(touchend, this._clickListener)
 
 				setTimeout(function () { self._cycle() }, 1000)
 			}
