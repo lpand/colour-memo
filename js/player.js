@@ -5,7 +5,7 @@ var Player = (function () {
 	var cont = doc.getElementById('container')
 	var start = doc.getElementById('start')
 	var volume = doc.getElementById('volume')
-
+	var touchev = 'touchstart'
 
 	function Player (squareSeq) {
 
@@ -25,7 +25,7 @@ var Player = (function () {
 
 		this._timeouts = []
 
-		start.addEventListener('mouseup', function () { 
+		start.addEventListener(touchev, function () { 
 
 			for (var i = 0, len = self._timeouts.length; i < len; ++i)
 				window.clearTimeout(self._timeouts[i])
@@ -35,14 +35,14 @@ var Player = (function () {
 
 			self._sSeq.reset()
 
-			cont.removeEventListener('mouseup', this._clickListener)
+			cont.removeEventListener(touchev, this._clickListener)
 
 			setTimeout(function () { self._cycle() }, 1000)
 
 		})
 
 
-		volume.addEventListener('mouseup', function (e) {
+		volume.addEventListener(touchev, function (e) {
 
 			e.preventDefault()
 
@@ -141,7 +141,7 @@ var Player = (function () {
 
 			this._it = this._sSeq.iter()
 
-			cont.addEventListener('mouseup', this._clickListener)
+			cont.addEventListener(touchev, this._clickListener)
 
 		},
 
@@ -156,7 +156,7 @@ var Player = (function () {
 			// completed yet, do nothing.
 			if (sq && sq.colour !== e.target) {
 				
-				cont.removeEventListener('mouseup', this._clickListener)
+				cont.removeEventListener(touchev, this._clickListener)
 
 				this._wrong()
 
@@ -168,7 +168,7 @@ var Player = (function () {
 			// if the played chose the right sequence
 			else if (! this._it.hasSquare()) {
 
-				cont.removeEventListener('mouseup', this._clickListener)
+				cont.removeEventListener(touchev, this._clickListener)
 
 				setTimeout(function () { self._cycle() }, 1000)
 			}
