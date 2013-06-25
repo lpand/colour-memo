@@ -45,7 +45,7 @@ var Player = (function () {
 
 		volume.addEventListener(touchend, function (e) {
 
-			e.preventDefault()
+			// e.preventDefault()
 
 			if (e.target.getAttribute('data-icon') == volumeIconsCodes.unmuted) {
 				
