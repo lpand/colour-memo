@@ -13,6 +13,36 @@ var Player = (function () {
 
 		var sound
 		var self = this
+		var enableSound = function (e) 
+		{ 
+			var s = self._sSeq.sqrs[0]
+			var method = s.sound.start ? 'start' : 'noteOn'
+
+			self._makeEvent('colourmemo:start', e.target)
+
+			// firefox doesn't support innerText and this is the fastest way.
+			start.innerHTML = 'restart'
+
+			for (var i = 0; i < 4; ++i) 
+			{
+				s = self._sSeq.sqrs[i]
+				s.sound[method](0)
+			}
+
+			enableSound = function (e)
+			{
+				for (var i = 0, len = self._timeouts.length; i < len; ++i)
+					clearTimeout(self._timeouts[i])
+
+				self._makeEvent('colourmemo:reset', e.target)
+				
+				self._sSeq.reset()
+
+				cont.removeEventListener(touchstart, this._clickListener)
+
+				self._makeTimeout(function () { self._cycle() }, 1000)
+			}			
+		}
 
 		this._sSeq = squareSeq
 
