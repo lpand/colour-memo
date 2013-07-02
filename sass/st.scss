@@ -16,9 +16,9 @@ $tr: top-right-square;
 $bl: bottom-right-square;
 $br: bottom-left-square;
 $tl-shadow: #990000;
-$tr-shadow: #0FFF00;
-$bl-shadow: #FFFF00;
-$br-shadow: #0000FF; 
+$tr-shadow: #FFFF00;
+$br-shadow: #0FFF00;
+$bl-shadow: #0000FF; 
 
 * { 
     margin: 0; 
@@ -88,9 +88,9 @@ body { background-color: #333333; }
 }
 
 ##{$tl} { background-color: #F02311; }
-##{$tr} { background-color: #00FF00; }
-##{$bl} { background-color: #FFFF00; }
-##{$br} { background-color: #0000FF; }
+##{$tr} { background-color: #FFFF00; }
+##{$br} { background-color: #00FF00; }
+##{$bl} { background-color: #0000FF; }
 
 #volume {
     font-size: x-large;

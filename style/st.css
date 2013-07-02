@@ -54,19 +54,19 @@ body {
   box-shadow: 0 0 1em 0.5em #990000; }
 
 #top-right-square:active, .glare-top-right-square {
-  -webkit-box-shadow: 0 0 1em 0.5em #0fff00;
-  -moz-box-shadow: 0 0 1em 0.5em #0fff00;
-  box-shadow: 0 0 1em 0.5em #0fff00; }
-
-#bottom-right-square:active, .glare-bottom-right-square {
   -webkit-box-shadow: 0 0 1em 0.5em yellow;
   -moz-box-shadow: 0 0 1em 0.5em yellow;
   box-shadow: 0 0 1em 0.5em yellow; }
 
-#bottom-left-square:active, .glare-bottom-left-square {
+#bottom-right-square:active, .glare-bottom-right-square {
   -webkit-box-shadow: 0 0 1em 0.5em blue;
   -moz-box-shadow: 0 0 1em 0.5em blue;
   box-shadow: 0 0 1em 0.5em blue; }
+
+#bottom-left-square:active, .glare-bottom-left-square {
+  -webkit-box-shadow: 0 0 1em 0.5em #0fff00;
+  -moz-box-shadow: 0 0 1em 0.5em #0fff00;
+  box-shadow: 0 0 1em 0.5em #0fff00; }
 
 #top-left-square, #top-right-square, #bottom-right-square, #bottom-left-square {
   display: inline-block;
@@ -79,12 +79,12 @@ body {
   background-color: #F02311; }
 
 #top-right-square {
-  background-color: #00FF00; }
-
-#bottom-right-square {
   background-color: #FFFF00; }
 
 #bottom-left-square {
+  background-color: #00FF00; }
+
+#bottom-right-square {
   background-color: #0000FF; }
 
 #volume {
