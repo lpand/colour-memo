@@ -24,8 +24,8 @@ body {
       text-align: center; } }
 @media screen and (orientation: landscape) {
   #container {
-    width: 70%;
-    height: 77%;
+    width: 68%;
+    height: 69%;
     margin: 7% auto auto 23%; }
 
   #control ul {
@@ -51,29 +51,29 @@ body {
 #top-left-square:active, .glare-top-left-square {
   -webkit-box-shadow: 0 0 1em 0.5em #990000;
   -moz-box-shadow: 0 0 1em 0.5em #990000;
-  box-shadow: 0 0 1em 0.5em #990000; }
+  box-shadow: 0 0 .1em .3em red; }
 
 #top-right-square:active, .glare-top-right-square {
   -webkit-box-shadow: 0 0 1em 0.5em yellow;
   -moz-box-shadow: 0 0 1em 0.5em yellow;
-  box-shadow: 0 0 1em 0.5em yellow; }
+  box-shadow: 0 0 .1em .3em yellow; }
 
 #bottom-right-square:active, .glare-bottom-right-square {
   -webkit-box-shadow: 0 0 1em 0.5em blue;
   -moz-box-shadow: 0 0 1em 0.5em blue;
-  box-shadow: 0 0 1em 0.5em blue; }
+  box-shadow: 0 0 .1em .3em blue; }
 
 #bottom-left-square:active, .glare-bottom-left-square {
   -webkit-box-shadow: 0 0 1em 0.5em #0fff00;
   -moz-box-shadow: 0 0 1em 0.5em #0fff00;
-  box-shadow: 0 0 1em 0.5em #0fff00; }
+  box-shadow: 0 0 .1em .3em #0fff00; }
 
 #top-left-square, #top-right-square, #bottom-right-square, #bottom-left-square {
   display: inline-block;
   margin: 0.5%;
   border-radius: 10px;
-  width: 48%;
-  height: 48%; }
+  width: 47%;
+  height: 47%; }
 
 #top-left-square {
   background-color: #F02311; }
@@ -99,3 +99,7 @@ body {
 h1 {
   color: white;
   text-transform: uppercase; }
+  
+#container {
+    padding: 3%;
+}
