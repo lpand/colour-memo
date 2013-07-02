@@ -31,10 +31,10 @@ var Player = (function () {
 
 			enableSound = function (e)
 			{
+				self._makeEvent('colourmemo:reset', e.target)
+
 				for (var i = 0, len = self._timeouts.length; i < len; ++i)
 					clearTimeout(self._timeouts[i])
-
-				self._makeEvent('colourmemo:reset', e.target)
 				
 				self._sSeq.reset()
 

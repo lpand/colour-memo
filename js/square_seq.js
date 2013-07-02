@@ -13,20 +13,17 @@ var SquareSeq = (function () {
 		@param {Number} [glareInterval=150] Period of time, in ms,  of a square's glare.
 		@param {Number} [gap=glareInterval+200] Period of time, in ms, between two glares.
 	**/
-	function SquareSeq (opts) {
-
+	function SquareSeq (opts) 
+	{
 		if (!opts || !opts.elems || opts.elems.length != 4)
 			throw new Error("elems must be provided...")
 
 		var i = 0, len
 
 		this.sqrs = []
-		for (; i < 4; ++i) {
-			
+		for (; i < 4; ++i) 
+		{
 			this.sqrs[i] = opts.elems[i]
-
-			this.sqrs[i].sound.start ? this.sqrs[i].sound.start(0) : this.sqrs[i].sound.noteOn(0) 
-
 		}
 		/**
 
