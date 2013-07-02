@@ -1,6 +1,7 @@
 * {
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  overflow: hidden; }
 
 html, body {
   height: 100%;
@@ -16,10 +17,11 @@ body {
     height: 50%;
     margin: 20% auto auto 10%; }
 
-  #control ul {
-    letter-spacing: 0.2em;
-    text-align: center;
-    margin-top: 15%; } }
+  #control {
+    margin-top: 15%; }
+    #control ul {
+      letter-spacing: 0.2em;
+      text-align: center; } }
 @media screen and (orientation: landscape) {
   #container {
     width: 70%;
@@ -39,9 +41,12 @@ body {
   color: #EEEEEE;
   text-transform: uppercase;
   font-size: xx-large;
-  text-shadow: #FF0000 -1px 2px; }
+  text-shadow: #FF0000 -1px 2px;
+  text-align: center; }
 #control li:active {
   color: #BBBBBB; }
+#control li:first-child {
+  border-bottom: 1px dotted #999999; }
 
 #top-left-square:active, .glare-top-left-square {
   -webkit-box-shadow: 0 0 1em 0.5em #990000;
@@ -84,8 +89,13 @@ body {
 
 #volume {
   font-size: x-large;
-  position: absolute;
-  bottom: 0;
-  left: 0;
+  /*    position: absolute;
+      bottom: 0;
+      left: 0;
+  */
   margin-bottom: 0.1em;
   margin-left: 0.5em; }
+
+h1 {
+  color: white;
+  text-transform: uppercase; }

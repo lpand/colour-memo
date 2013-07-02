@@ -1,5 +1,6 @@
 
 var Player = (function () {
+    "use strict"
 
 	var doc = document
 	var cont = doc.getElementById('container')
@@ -16,7 +17,7 @@ var Player = (function () {
 		this._sSeq = squareSeq
 
 		sound = this._sSeq.sqrs[0].sound
-		this._volume = sound.context.createGain()
+		this._volume = sound.context.createGainNode()
 		this._volume.gain.value = 0.1
 		this._volume.connect(this._volume.context.destination)
 
@@ -26,26 +27,39 @@ var Player = (function () {
 
 		this._timeouts = []
 
-		start.addEventListener(touchend, function () { 
+		start.addEventListener(touchstart, function () { 
 
 			for (var i = 0, len = self._timeouts.length; i < len; ++i)
-				window.clearTimeout(self._timeouts[i])
+				clearTimeout(self._timeouts[i])
 
 			// firefox doesn't support innerText and this is the fastest way.
 			start.innerHTML = 'restart'
 
 			self._sSeq.reset()
 
-			cont.removeEventListener(touchend, this._clickListener)
+			cont.removeEventListener(touchstart, this._clickListener)
 
-			setTimeout(function () { self._cycle() }, 1000)
+			self._makeTimeout(function () { self._cycle() }, 1000)
 
 		})
 
+		start.addEventListener('touchstart', function enableSound (e) {
+			
+			self._makeEvent('colourmemo:reset', e.target)
 
-		volume.addEventListener(touchend, function (e) {
+			var s = self._sSeq.sqrs[0]
+			var method = s.sound.start ? 'start' : 'noteOn'
 
-			// e.preventDefault()
+			for (var i = 0; i < 4; ++i) 
+			{
+				s = self._sSeq.sqrs[i]
+				s.sound[method](0)
+			}
+
+			cont.removeEventListener('touchstart', enableSound)
+		})
+
+		volume.addEventListener('touchend', function (e) {
 
 			if (e.target.getAttribute('data-icon') == volumeIconsCodes.unmuted) {
 				
@@ -62,52 +76,51 @@ var Player = (function () {
 			}
 		})
 
-		cont.addEventListener(touchstart, function (e) {
-
+		cont.addEventListener('touchstart', function (e) 
+		{
 			if (self._isMute || e.target === cont) return
 
 			var sound = self._sSeq.soundOf(e.target)
 
-			if (sound) {
-
+			if (sound) 
+			{
 				sound.connect(self._volume)
-
-				setTimeout(function () {
-
+				// this is the only timeout that mustn't be cleared
+				setTimeout(function () 
+				{
 					sound.disconnect(self._volume)
 
 				}, self._sSeq.glareInterval)
 			}
-
 		})
 
 	}
 
-	Player.prototype = {
-
-		_play: function () {
-
+	Player.prototype = 
+	{
+		_play: function () 
+		{
 			var sIt = this._sSeq.iter()
 			var i = 0
 			var self = this
 
 			self.timeouts = []
 
-			while (sIt.hasSquare()) {
-
-				self._timeouts.push(+function () {
-					
+			while (sIt.hasSquare()) 
+			{
+				self._makeTimeout(function () 
+				{
 					var s = sIt.nextSquare()
 					var c = 'glare-'+ s.colour.id
 
-					return setTimeout(function () {
-
+					return setTimeout(function () 
+					{
 						s.colour.classList.add(c)
 						self._isMute || s.sound 
 										&&	s.sound.connect(self._volume)
 						
-						setTimeout(function () {
-
+						setTimeout(function () 
+						{
 							s.colour.classList.remove(c)
 							self._isMute || s.sound
 										&& s.sound.disconnect(self._volume)
@@ -119,20 +132,18 @@ var Player = (function () {
 			}
 		},
 
-		unmute: function () {
-
+		unmute: function () 
+		{
 			this._isMute = false
-
 		},
 
-		mute: function () {
-			
+		mute: function () 
+		{
 			this._isMute = true
-
 		},
 
-		_cycle: function () { 
-
+		_cycle: function () 
+		{ 
 			var self = this
 			var it
 
@@ -143,11 +154,10 @@ var Player = (function () {
 			this._it = this._sSeq.iter()
 
 			cont.addEventListener(touchend, this._clickListener)
-
 		},
 
-		_clickCb: function (e) { 
-
+		_clickCb: function (e) 
+		{ 
 			if (e.target === cont) return
 
 			var self = this
@@ -155,39 +165,41 @@ var Player = (function () {
 
 			// if the player chose the right colour and the seq isn't
 			// completed yet, do nothing.
-			if (sq && sq.colour !== e.target) {
-				
+			if (sq && sq.colour !== e.target) 
+			{
 				cont.removeEventListener(touchend, this._clickListener)
 
-				this._wrong()
+				this._makeEvent('colourmemo:wrong', e.target)
 
 				this._sSeq.reset()
 
 				// the game restart after one sec
-				setTimeout(function () { self._cycle() }, 1000)
+				this._makeTimeout(function () { self._cycle() }, 1000)
 			}
 			// if the played chose the right sequence
-			else if (! this._it.hasSquare()) {
-
+			else if (! this._it.hasSquare()) 
+			{
 				cont.removeEventListener(touchend, this._clickListener)
 
-				setTimeout(function () { self._cycle() }, 1000)
+				this._makeEvent('colourmemo:rightsequence', e.target)
+
+				this._makeTimeout(function () { self._cycle() }, 1000)
 			}
 
 		},
 
-		_wrong: function () {
-		
-			var bgColour = window.getComputedStyle(doc.body).backgroundColor
+		_makeEvent: function (type, target) 
+		{
+			var evt = document.createEvent('CustomEvent')
 
-			doc.body.style.backgroundColor = 'rgb(255, 0, 0)'
+			evt.initCustomEvent(type, true, true, {})
+			target.dispatchEvent(evt)
+		},
 
-			setTimeout(function () { 
-
-				doc.body.style.backgroundColor = bgColour
-
-			}, 150)
-		}		
+		_makeTimeout: function (fn, timer) 
+		{
+			this._timeouts.push(setTimeout(fn, timer))
+		}
 
 	} /* Player.prototype */
 

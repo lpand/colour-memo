@@ -1,4 +1,5 @@
 var SquareSeq = (function () {
+    "use strict"
 
 	/**
 	Handles the colour sequece, initially empty.
@@ -24,7 +25,7 @@ var SquareSeq = (function () {
 			
 			this.sqrs[i] = opts.elems[i]
 
-			this.sqrs[i].sound.start(0)
+			this.sqrs[i].sound.start ? this.sqrs[i].sound.start(0) : this.sqrs[i].sound.noteOn(0) 
 
 		}
 		/**

@@ -20,7 +20,11 @@ $tr-shadow: #0FFF00;
 $bl-shadow: #FFFF00;
 $br-shadow: #0000FF; 
 
-* { margin: 0; padding: 0; }
+* { 
+    margin: 0; 
+    padding: 0; 
+    overflow: hidden;
+}
 
 html, body {
     height: 100%;
@@ -32,10 +36,13 @@ body { background-color: #333333; }
 
 @media screen and (orientation:portrait) {
     #container { @include container(80%, 50%, 20% auto auto 10%); }
-    #control ul {
-        letter-spacing: 0.2em;
-        text-align: center;
+    #control {
         margin-top: 15%;
+
+        ul {
+            letter-spacing: 0.2em;
+            text-align: center;
+        }
     }
 }
 
@@ -58,9 +65,11 @@ body { background-color: #333333; }
         color: #EEEEEE;
         text-transform: uppercase;
         font-size: xx-large;
-        text-shadow: #FF0000 -1px 2px; 
+        text-shadow: #FF0000 -1px 2px;
+        text-align: center; 
     }
     li:active { color: #BBBBBB; }
+    li:first-child { border-bottom: 1px dotted #999999; }
 }
 
 
@@ -85,16 +94,17 @@ body { background-color: #333333; }
 
 #volume {
     font-size: x-large;
-    position: absolute;
+/*    position: absolute;
     bottom: 0;
     left: 0;
-    margin-bottom: 0.1em;
+*/    margin-bottom: 0.1em;
     margin-left: 0.5em;
 }
 
-
-
-
+h1 {
+    color: white;
+    text-transform: uppercase;
+}
 
 
 
