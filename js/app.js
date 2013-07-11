@@ -42,22 +42,26 @@ cont.addEventListener('colourmemo:wrong', function (e)
     var body = doc.body
     var bgColour = window.getComputedStyle(doc.body).backgroundColor
     var mex = doc.createElement('h1')
-    var relativePos = $(cont).find('a:first').position()
+    var $m = $(mex)
+
+    var $c = $(cont)
+    var off = $c.offset()
+    var w = off.left + $c.outerWidth() / 4
+    var h = off.top + $c.outerHeight() / 4
+    
+    $m.html('Hai raggiunto il livello '+ _level)
+    $m.css({ position: 'absolute', top: h + 'px', left: w + 'px' })
+
+    cont.appendChild(mex)
+    body.style.backgroundColor = 'rgb(255, 0, 0)'
 
     resetLevel()
 
-    mex.innerHTML = 'Sbagliato!'
-    var s = mex.style
-    s.position = "absolute"
-    s.top = +relativePos.top - 50 + 'px'
-    s.left = relativePos.left + 'px'
-
-    body.appendChild(mex)
-    body.style.backgroundColor = 'rgb(255, 0, 0)'
-
     setTimeout(function () { body.style.backgroundColor = bgColour }, 150)
 
-    setTimeout(function() { body.removeChild(mex) }, 1300)
+    setTimeout(function() { cont.removeChild(mex) }, 1300)
+
+    return false
 })
 
 $('#control ul').append('<li id="level">Level '+ _level +'</li>')
